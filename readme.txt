@@ -1,3 +1,7 @@
+Usage:
+
+Download the ZIP and extract the folder. Run EXE file from the folder. 
+
 There should be four files in the folder including this readme file. Really
 only the exe file is needed to get the app up and running. 
 
