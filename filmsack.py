@@ -145,63 +145,81 @@ def parse_movie_list():
 
 # defs that output the counts for the various info parsed above
 def top_directors(z):
-    print('Directors featured in ' + z +' or more films')
-    print('=' * 37)
-    for row in c.execute('''SELECT director, COUNT(director) FROM movieDirectors
-                         GROUP BY director HAVING count(*) >= ''' + z +
-                         ' ORDER BY COUNT(director) desc'):
-        print(list(row)[0].ljust(20, ".") + str(list(row)[1]))
-    print()
+    with open('directors.html', 'w') as f:
+        f.write('<link href="txtstyle.css" rel="stylesheet" type="text/css" />' + '\n')
+        print('Directors featured in ' + z +' or more films')
+        print('=' * 41)
+        for row in c.execute('''SELECT director, COUNT(director) FROM movieDirectors
+                            GROUP BY director HAVING count(*) >= ''' + z +
+                            ' ORDER BY COUNT(director) desc'):
+            print(list(row)[0].ljust(39, ".") + str(list(row)[1]).rjust(2, "."))
+            f.write(str(list(row)[0].ljust(39, ".") + str(list(row)[1]).rjust(2, ".")) + ' <br>\n')
+        print()
 
 
 def top_years(z):
-    print('Years that ' + z +' or more movies were sacked')
-    print('=' * 41)
-    for row in c.execute('''SELECT movieYear, COUNT(movieYear) FROM titleAndID
-                         GROUP BY movieYear HAVING count(*) >= ''' + z +
-                         ' ORDER BY COUNT(movieYear) desc'):
-        print(list(row)[0].ljust(5, "-") + str(list(row)[1]))
-    print()
+    with open('years.html', 'w') as f:
+        f.write('<link href="txtstyle.css" rel="stylesheet" type="text/css" />' + '\n')
+        print('Years that ' + z +' or more movies were sacked')
+        print('=' * 41)
+        for row in c.execute('''SELECT movieYear, COUNT(movieYear) FROM titleAndID
+                            GROUP BY movieYear HAVING count(*) >= ''' + z +
+                            ' ORDER BY COUNT(movieYear) desc'):
+            print(list(row)[0].ljust(39, ".") + str(list(row)[1]).rjust(2, "."))
+            f.write(str(list(row)[0].ljust(39, ".") + str(list(row)[1]).rjust(2, ".")) + ' <br>\n')
+        print()
 
 
 def top_actors(z):
-    print('Actors featured in ' + z +' or more films')
-    print('=' * 34)
-    for row in c.execute('''SELECT actor, COUNT(actor) FROM movieStars
-                         GROUP BY actor HAVING count(*) >= ''' + z +
-                         ' ORDER BY COUNT(actor) desc'):
-        print(list(row)[0].ljust(32, ".") + str(list(row)[1]).rjust(2, "."))
-    print()
+    with open('actors.html', 'w') as f:
+        f.write('<link href="txtstyle.css" rel="stylesheet" type="text/css" />' + '\n')
+        print('Actors featured in ' + z +' or more films')
+        print('=' * 41)
+        for row in c.execute('''SELECT actor, COUNT(actor) FROM movieStars
+                             GROUP BY actor HAVING count(*) >= ''' + z +
+                             ' ORDER BY COUNT(actor) desc'):
+            print(list(row)[0].ljust(39, ".") + str(list(row)[1]).rjust(2, "."))
+            f.write(str(list(row)[0].ljust(39, ".") + str(list(row)[1]).rjust(2, ".")) + ' <br>\n')
+        print()
 
 
 def top_producers(z):
-    print('Producers featured in ' + z +' or more films')
-    print('=' * 37)
-    for row in c.execute('''SELECT producer, COUNT(producer) FROM movieProducers
-                         GROUP BY producer HAVING count(*) >= ''' + z +
-                         ' ORDER BY COUNT(producer) desc'):
-        print(list(row)[0].ljust(35, ".") + str(list(row)[1]).rjust(2, "."))
-    print()
+    with open('producers.html', 'w') as f:
+        f.write('<link href="txtstyle.css" rel="stylesheet" type="text/css" />' + '\n')
+        print('Producers featured in ' + z +' or more films')
+        print('=' * 41)
+        for row in c.execute('''SELECT producer, COUNT(producer) FROM movieProducers
+                            GROUP BY producer HAVING count(*) >= ''' + z +
+                            ' ORDER BY COUNT(producer) desc'):
+            print(list(row)[0].ljust(39, ".") + str(list(row)[1]).rjust(2, "."))
+            f.write(str(list(row)[0].ljust(39, ".") + str(list(row)[1]).rjust(2, ".")) + ' <br>\n')
+        print()
 
 
 def top_writers(z):
-    print('Writers featured in ' + z +' or more films')
-    print('=' * 35)
-    for row in c.execute('''SELECT writer, COUNT(writer) FROM movieWriters
-                         GROUP BY writer HAVING count(*) >= ''' + z +
-                         ' ORDER BY COUNT(writer) desc'):
-        print(list(row)[0].ljust(31, ".") + str(list(row)[1]).rjust(2, "."))
-    print()
+    with open('writers.html', 'w') as f:
+        f.write('<link href="txtstyle.css" rel="stylesheet" type="text/css" />' + '\n')
+        print('Writers featured in ' + z +' or more films')
+        print('=' * 41)
+        for row in c.execute('''SELECT writer, COUNT(writer) FROM movieWriters
+                            GROUP BY writer HAVING count(*) >= ''' + z +
+                            ' ORDER BY COUNT(writer) desc'):
+            print(list(row)[0].ljust(39, ".") + str(list(row)[1]).rjust(2, "."))
+            f.write(str(list(row)[0].ljust(39, ".") + str(list(row)[1]).rjust(2, ".")) + ' <br>\n')
+        print()
 
 
 def top_composers(z):
-    print('Composers featured in ' + z +' or more films')
-    print('=' * 37)
-    for row in c.execute('''SELECT composer, COUNT(composer) FROM movieComposers
-                         GROUP BY composer HAVING count(*) >= ''' + z +
-                         ' ORDER BY COUNT(composer) desc'):
-        print(list(row)[0].ljust(35, ".") + str(list(row)[1]).rjust(2, "."))
-    print()
+    with open('composers.html', 'w') as f:
+        f.write('<link href="txtstyle.css" rel="stylesheet" type="text/css" />' + '\n')
+        print('Composers featured in ' + z +' or more films')
+        print('=' * 41)
+        for row in c.execute('''SELECT composer, COUNT(composer) FROM movieComposers
+                            GROUP BY composer HAVING count(*) >= ''' + z +
+                            ' ORDER BY COUNT(composer) desc'):
+            print(list(row)[0].ljust(39, ".") + str(list(row)[1]).rjust(2, "."))
+            f.write(str(list(row)[0].ljust(39, ".") + str(list(row)[1]).rjust(2, ".")) + ' <br>\n')
+        print()
 
 
 ascii_title()
